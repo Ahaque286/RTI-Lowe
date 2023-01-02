@@ -1,3 +1,14 @@
+% This example shows how to rebuild a CONTINOUS surface from normal vectors
+%
+% The technique will not work if the surface is something like a staircase
+% with infinite slope in certain points. The RTI does not have information
+% about such points.
+%  
+% I initially created a surface Z = (X,Y) and generated its normal vectors.
+% Then used those normal vectors to regenerate the surface. 
+% Figure 1 shows the original surface with normal vectors and figure 2
+% shows the surface reconstrcuted from the normal vectos via integration.
+%
 m = 50;
 n = 50;
 x = single(linspace(-8,8,m));
@@ -29,7 +40,7 @@ for i = 1:50
 end
 
 figure
-surf(X,Y,Z_x)
+surfnorm(X,Y,Z)
 
 figure
-surfnorm(X,Y,Z)
+surf(X,Y,Z_x)
